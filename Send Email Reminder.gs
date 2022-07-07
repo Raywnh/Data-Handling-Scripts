@@ -10,6 +10,7 @@ function sendEmail(email,...array)  {
 // NOTES: 
 
 //...array is just syntax for passing in array as a parameter in the ES6 update to javascript, it must be the very last parameter in the function as well
+
 // Line 6: Admins may edit the subject of the email and the body of the email by editing the sentences/string enclosed by single quotes
   // E.g. MailApp.sendEmail(email, 'Enter subject here', 'Enter body here' + array)
 
