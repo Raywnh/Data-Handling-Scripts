@@ -7,7 +7,7 @@ function sendEmail(email,...array)  {
   for (let i = 0; i < array.length; i++)  
     body += array[i] + ' ';
   
-  MailApp.sendEmail(email,'Reminders to complete the following safety training modules',array);
+  MailApp.sendEmail(email,'Reminders to complete the following safety training modules', array);
 
 }
 

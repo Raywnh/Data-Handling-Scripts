@@ -1,4 +1,5 @@
-function myFunction() {
+function checkEmptyCells() {
+  // Opens 
   var spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
   var range = spreadSheet.getRangeByName('Data');
 
@@ -11,12 +12,12 @@ function myFunction() {
     let k = 0;
 
     for (let j = 0; j < colSize; j++) {
-        if (values[i][j] != '✓') {
+        if (values[i][j].length == 0) {
           incompletedElements[k] = values[0][j];
           k++;
         }
     }
-    if(incompletedElements.length != 0)
+    if(incompletedElements.length != 0 && values[i][0].length != 0)
       sendEmail(values[i][0],incompletedElements);
   } 
 } 
