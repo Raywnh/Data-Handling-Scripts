@@ -2,17 +2,20 @@ function checkContractEnd(i,...values) {
   
     // Stores the current date as a variable
     var currentDate = Utilities.formatDate(new Date(), "GMT+8", "MMMM dd, yyyy");
-    console.log(values.length);
-    while(i < values.length) {
-      var reformattedDate = Utilities.formatDate(values[i][0], "GMT+8", "MMMM dd, yyyy");
-      if(values[i] == '')
-        break;
-      if (values[i] == currentDate) 
-        moveData(i);
-      elsef
-        i++;
-    }
 
+    while(i > 0)  {
+      if (values[i][0] == '')
+        i--;
+      else  {
+        var reformattedDate = Utilities.formatDate(values[i][0], "GMT+8", "MMMM dd, yyyy");
+        if (reformattedDate == currentDate) {
+          moveData(i+1);
+          i--;
+        }
+        else
+          return;
+      }
+    }
 }
 
 
