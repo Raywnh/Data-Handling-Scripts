@@ -3,12 +3,12 @@ function myFunction() {
   console.log(currentDate);
 
   var spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
-   
-  // Takes the column containing only the dates of when each contract ends
   var range = spreadSheet.getRangeByName('Contract_End_Dates');
   var values = range.getValues();
-  var valuess = Utilities.formatDate(values[7][0],"GMT+8","MMMM dd, yyyy")
-  console.log(valuess);
-  if (valuess == currentDate)
-    console.log('success');
+
+  var reFactoredValue = Utilities.formatDate(values[1][0], "GMT+8", "MMMM dd, yyyy");
+  console.log(reFactoredValue);
+  // Takes the column containing only the dates of when each contract ends
+  //var range = spreadSheet.getRangeByName('Contract_End_Dates');
+  //spreadSheet.getRange('Sheet1!2:2').moveTo(spreadSheet.getRange('Sheet2!2:2'));
 }

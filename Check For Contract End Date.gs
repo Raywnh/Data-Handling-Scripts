@@ -1,9 +1,10 @@
 function checkContractEnd(i,...values) {
   
     // Stores the current date as a variable
-    var currentDate = Utilities.formatDate(new Date(), "GMT+8", "MM/dd/yyyy");
+    var currentDate = Utilities.formatDate(new Date(), "GMT+8", "MMMM dd, yyyy");
     console.log(values.length);
     while(i < values.length) {
+      var reformattedDate = Utilities.formatDate(values[i][0], "GMT+8", "MMMM dd, yyyy");
       if(values[i] == '')
         break;
       if (values[i] == currentDate) 
@@ -15,6 +16,7 @@ function checkContractEnd(i,...values) {
 }
 
 
-// Loop through column --> check if each value is == currentDate
-// if it is, call to move data which moves the rows
-// Take the row of the user whose contract is ending as a parameter
+// Start from max length
+// If space is = '', then skip
+// If we encounter a date that is not = current date, end the function call
+// If we encounter a date that is = current date, function call to move the rows

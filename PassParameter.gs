@@ -1,13 +1,11 @@
-function passValues(row) {
+function passValues() {
   var spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
    
   // Takes the column containing only the dates of when each contract ends
   var range = spreadSheet.getRangeByName('Contract_End_Dates');
   var values = range.getValues();
-  if (row == undefined)
-    var i = 0;
-  else
-    i = row;
+
+  let i = 0
   
   checkContractEnd(i, ...values);
 }
