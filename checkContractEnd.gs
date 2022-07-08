@@ -7,11 +7,15 @@ function checkContractEnd(i,...values) {
       if (values[i][0] == '')
         i--;
       else  {
+        // Reformats the date stored in the spreadsheet to be identical to the format of currentDate
         var reformattedDate = Utilities.formatDate(values[i][0], "GMT+8", "MMMM dd, yyyy");
+        
+        // Call to move row of data function if the date of the contract's end date is = today's date
         if (reformattedDate == currentDate) {
           moveData(i+1);
           i--;
         }
+        // If both dates aren't the same, then exit the function
         else
           return;
       }
