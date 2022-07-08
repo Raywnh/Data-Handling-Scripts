@@ -22,8 +22,10 @@ function checkContractEnd(i,...values) {
     }
 }
 
+// We start decrementing from the end of the array until we reach a data cell that contains a date
+// Since the dates are already sorted in descending order, the earliest date will be at the bottom of the column
 
-// Start from max length
-// If space is = '', then skip
-// If we encounter a date that is not = current date, end the function call
-// If we encounter a date that is = current date, function call to move the rows
+// If the earliest date isn't = today's date, then every date above it is not = today's date either
+// If the earliest date is = today's date, we move it to another sheet and keep checking until we reach a date that is not today's date
+
+// So by checking if the earliest date is = today's date, we lessen the amount of searching and speeds up the process of our algorithm
