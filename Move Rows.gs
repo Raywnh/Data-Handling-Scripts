@@ -1,5 +1,5 @@
 function moveData(row) {
-  var spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
+  var spreadSheet = SpreadsheetApp.getActiveSpreadsheet;
   var firstSheet = spreadSheet.getSheetByName('Sheet1');
   var secondSheet = spreadSheet.getSheetByName('Sheet2');
 
@@ -7,27 +7,19 @@ function moveData(row) {
   var archivedEntries = archiveRange.getValues();
   
   for (let i = 0; i < archivedEntries.length; i++)  {
-    if (archivedEntries[i][0].length == 0) {
-       var newRow = i;
+    if (archivedEntries[i] == '') {
+       var newRow = i+1;
        break;
     }
   }
-  //var firstRange = String(row) + ':' + String(row);
-  //var secondRange = String(newRow) +  ':' + String(newRow);
- 
   var firstRange = Utilities.formatString("%d:%d",row,row);
   var secondRange = Utilities.formatString("%d:%d",newRow,newRow);
-
-
-
-  console.log(firstRange);
-  console.log(secondRange);
   
-  // spreadSheet.getRange('Sheet1!' + firstRange).moveTo(spreadSheet.getRange('Sheet2!' + secondRange));
-
+  //spreadSheet.getRange('Sheet1!' + firstRange).copyTo(spreadSheet.getRange('Sheet2!' + secondRange));
   
-
-  // firstSheet.deleteRow(row+1);
+  //firstSheet.deleteRow(row);
+  row++;
+  passValues(row);
 }
 
 // We move the row to another sheet and delete the row in the old sheet
