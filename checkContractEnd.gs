@@ -15,6 +15,7 @@ function checkContractEnd(i,...values) {
           moveData(i+1);
           i--;
         }
+        
         // If both dates aren't the same, then exit the function
         else
           return;
