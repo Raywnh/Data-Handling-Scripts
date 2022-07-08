@@ -18,8 +18,16 @@ function moveData(row) {
   var firstRange = Utilities.formatString("%d:%d",row,row);
   var secondRange = Utilities.formatString("%d:%d",newRow,newRow);
 
-  firstSheet.getRange(row+1,1,1,9).moveTo(secondSheet.getRange(newRow+1,1,1,9));
-  firstSheet.deleteRow(row);
+
+
+  console.log(firstRange);
+  console.log(secondRange);
+  
+  // spreadSheet.getRange('Sheet1!' + firstRange).moveTo(spreadSheet.getRange('Sheet2!' + secondRange));
+
+  
+
+  // firstSheet.deleteRow(row+1);
 }
 
 // We move the row to another sheet and delete the row in the old sheet
