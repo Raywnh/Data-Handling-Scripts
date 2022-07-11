@@ -1,11 +1,17 @@
+/*
+ * Function: moveData - moves the selected row of data to another sheet
+ * Parameter: row - the row being moved
+ */
 function moveData(row) {
-  var spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
+  var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
   
+  var time = getTime();
+
   // Take the range of data in the archive sheet
   var archiveRange = spreadSheet.getRangeByName('ArchivedRange');
   var archivedEntries = archiveRange.getValues();
   
-  // This loop gives us an empty row to move data to
+  // This loop searches the archive sheet and gives us an empty row to move data to
   for (let i = 0; i < archivedEntries.length; i++)  {
     if (archivedEntries[i] == '') {
        var newRow = i+1;
@@ -18,10 +24,16 @@ function moveData(row) {
   var secondRange = Utilities.formatString("%d:%d",newRow,newRow);
 
   // Moves the row of data to another sheet
-  spreadSheet.getRange('Sheet1!' + firstRange).moveTo(spreadSheet.getRange('Sheet2!' + secondRange));
+  if (time >= '11:00:00' && time <= '12:00:00') {
+    spreadSheet.getRange('List of Users (Students)!' + firstRange).moveTo(spreadSheet.getRange('List of Users (Left CityU)!' + secondRange));
+    studentSheet.deleteRow(row);
+  }  
+  else
+    spreadSheet.getRange('List of Users (Staff)!' + firstRange).moveTo(spreadSheet.getRange('List of Users (Left CityU)!' + secondRange));
   
   
 }
+// NOTES:
 
-// We move the row to another sheet and delete the row in the old sheet
-// New Method, copy cell by cell to another row instead of moving directly
+// We move the row to another sheet directly without having to delete rows since the data is sorted by contract end date in descending order already, meaning that the row(s) of data that will be moved are placed at the bottom of the data set
+// This method avoids messing with the range of cells in the data set which occured in the previous method of incorporating deleting rows

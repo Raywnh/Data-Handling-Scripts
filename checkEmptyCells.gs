@@ -5,8 +5,14 @@
 
 function checkEmptyCells() {
   // Opens the spreadsheet and stores the range of values in variable range (range is around 75 rows and 18 columns - subject to change)
-  var spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
-  var range = spreadSheet.getRangeByName('Data');
+  var spreadSheet = openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
+
+  var time = getTime();
+
+  if (time >= '11:00:00' && time <= '12:00:00')
+    var range = spreadSheet.getRangeByName('StudentData');
+  else
+    var range = spreadSheet.getRangeByName('StaffData');
 
   // Gets the values in the range of data and stores them in a two dimensional array
   var values = range.getValues();
