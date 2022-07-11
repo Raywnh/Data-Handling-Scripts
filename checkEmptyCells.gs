@@ -9,9 +9,9 @@ function checkEmptyCells() {
 
   var time = getTime();
 
-  if (time >= '11:00:00' && time <= '12:00:00')
+  if (time >= '08:00:00' && time <= '09:00:00')
     var range = spreadSheet.getRangeByName('StudentData');
-  else
+  else  (time >= '09:00:00' && time <= '10:00:00')
     var range = spreadSheet.getRangeByName('StaffData');
 
   // Gets the values in the range of data and stores them in a two dimensional array

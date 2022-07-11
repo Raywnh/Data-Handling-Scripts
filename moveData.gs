@@ -4,7 +4,9 @@
  */
 function moveData(row) {
   var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
-  
+  var studentSheet = spreadSheet.getSheetByName('List of Users (Students)');
+  var staffSheet = spreadSheet.getSheetByName('List of Users (Staff)');
+
   var time = getTime();
 
   // Take the range of data in the archive sheet
@@ -24,13 +26,14 @@ function moveData(row) {
   var secondRange = Utilities.formatString("%d:%d",newRow,newRow);
 
   // Moves the row of data to another sheet
-  if (time >= '11:00:00' && time <= '12:00:00') {
-    spreadSheet.getRange('List of Users (Students)!' + firstRange).moveTo(spreadSheet.getRange('List of Users (Left CityU)!' + secondRange));
+  if (time >= '08:00:00' && time <= '09:00:00') {
+    spreadSheet.getRange('List of Users (Students)!' + firstRange).copyTo(spreadSheet.getRange('List of Users (Left CityU)!' + secondRange));
     studentSheet.deleteRow(row);
   }  
-  else
-    spreadSheet.getRange('List of Users (Staff)!' + firstRange).moveTo(spreadSheet.getRange('List of Users (Left CityU)!' + secondRange));
-  
+  else if ((time >= '09:00:00' && time <= '10:00:00'))  {
+    spreadSheet.getRange('List of Users (Staff)!' + firstRange).copyTo(spreadSheet.getRange('List of Users (Left CityU)!' + secondRange));
+    staffSheet.deleteRow(row);
+  }
   
 }
 // NOTES:
