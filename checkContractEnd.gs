@@ -34,11 +34,11 @@ function checkContractEnd(i,...values) {
     
         // Call to move row of data function if the date of the contract's end date is = today's date
         if (reformattedDate == weekAfter) {
-          sendContractEndEmail(email, 1);
+          sendContractEndEmail(email, 7);
           i--;
         }
         else if(reformattedDate == currentDate) {
-          sendContractEndEmail(email, 2);
+          sendContractEndEmail(email, 0);
           i--;
         }
         else if (reformattedDateWeekAfter == currentDate || values[i][maxLength - 1] != '') {

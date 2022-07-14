@@ -1,10 +1,11 @@
-function sendContractEndEmail(email, option) {
+function sendContractEndEmail(email, daysUntilContractEnd) {
+  var time = getTime()
+  if (time >= '08:00:00'  && time <= '09:00:00')
+    console.log('student');
+  else if (time >= '09:00:00' && time <= '10:00:00')
+    console.log('staff');
 
- // if (option == 1)  {
-      MailApp.sendEmail('rayhownh@gmail.com', 'Contract Extension/Termination', 'Reminder that your contract will end in 7 days, if you are planning to extend the contract, please update your contract extension date and your Period of Contract in the google form below: \n https://docs.google.com/forms/d/e/1FAIpQLSfPneEAv6dE1_OCYvdAfzQb-qNcwrTTsjtHj8dxkpEDZXbfVA/viewform');
- // }
- // else  {
+  MailApp.sendEmail(email, 'Contract Extension/Termination', 'This is a reminder that your contract will end in ' + daysUntilContractEnd +' days, if you are planning to extend your contract, please email placeholder@gmail.com for further details. \n If you have already extended your contract, we request that you update your Contract End Date and your Period of Contract in the google form below: \n link');
+ 
 
-//  }
-  
 }

@@ -13,7 +13,7 @@ function sendReminderEmail(email,...array)  {
     reformattedString += '- ' + array[0][i] + '\n';
 
   
-  MailApp.sendEmail(email,'Reminders to complete the following safety training modules', 'Please remember to finish the following tasks:' + '\n' + '\n' + reformattedString);
+  MailApp.sendEmail(email,'This is a reminder to complete the following safety training modules', 'Please remember to finish the following tasks:' + '\n' + '\n' + reformattedString);
 }
 
 // NOTES: 

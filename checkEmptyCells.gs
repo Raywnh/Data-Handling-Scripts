@@ -41,7 +41,7 @@ function checkEmptyCells() {
             j++;
         }
         else if (labSection == labTwo)  {
-          if (j >= 7 && j <= 10)
+          if (j == 7)
             j = 11;
         }
         
