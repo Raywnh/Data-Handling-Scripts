@@ -7,19 +7,19 @@ function passValues() {
   var time = getTime();
 
   var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
-
-  if (time >= '08:00:00' && time <= '09:00:00') {
-    // Takes the column containing only the dates of when each contract ends
-    var range = spreadSheet.getRangeByName('StudentContractEndDates');
-    var values = range.getValues();
-    var maxRows = values.length;
-  }
-  else if (time >= '09:00:00' && time <= '10:00:00')  {
-    var range = spreadSheet.getRangeByName('StaffContractEndDates');
-    var values = range.getValues();
-    var maxRows = values.length;
-  }
   
+ // if (time >= '08:00:00' && time <= '09:00:00') {
+    // Takes the column containing only the dates of when each contract ends
+    var range = spreadSheet.getRangeByName('StudentData');
+    var values = range.getValues();
+    var maxRows = values.length;
+ //}
+ /* else if (time >= '09:00:00' && time <= '10:00:00')  {
+    var range = spreadSheet.getRangeByName('StaffData');
+    var values = range.getValues();
+    var maxRows = values.length;
+  }
+  */
   checkContractEnd(maxRows - 1, ...values);
  
 }
