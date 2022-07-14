@@ -1,7 +1,12 @@
-function tests() {
+function tests(email,...array) {
   var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
-   var range = spreadSheet.getRangeByName('StudentData');
-   var values = range.getValues();
-   var labSection = values[1][values[1].length - 1];
-   console.log(labSection);
+ // var array = ['one','two','three'];
+  var newString = '';
+
+  for (let i = 0; i < array[0].length; i++)  {
+    newString += '-' + array[0][i] + '\n';
+  }
+  console.log(array);
+  console.log(newString);
+  
 }

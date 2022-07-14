@@ -17,18 +17,34 @@ function checkEmptyCells() {
   // Gets the values in the range of data and stores them in a two dimensional array
   var values = range.getValues();
   var rowSize = values.length;
-  
+
+
+  // All possible combinations of assigned lab sections 
+  var labOne = 'P1610, P1607, P1410';
+  var labTwo = 'P1628';
+  var labThree = 'P1816, P1602';
+
   // Loops through the two dimensional array and checks each cell for whether its empty 
   for (let i = 1; i < rowSize; i++) {
     var colSize = values[i].length;
+    
     var labSection = values[i][values[i].length - 1];
+
     // Creates an array that will be used to contain the specific elements that the users have yet to complete
     var incompletedElements = [];
     let k = 0;
 
-    // Start looping through a row from column B because column A contains timestamps that we do not use  
     for (let j = 1; j < colSize; j++) {
-
+      
+        if (labSection.includes(labOne) && !labSection.includes(labThree))  {
+          if (j == 9)
+            j++;
+        }
+        else if (labSection == labTwo)  {
+          if (j >= 7 && j <= 10)
+            j = 11;
+        }
+        
         // If the cell is empty, add the title of the element into the array 
         if (values[i][j].length == 0) {
 
@@ -43,6 +59,7 @@ function checkEmptyCells() {
 
       // Function call to sendEmail which sends an automated email to the user containing the tasks that they must complete
       sendEmail(values[i][0],incompletedElements);
+     
   } 
 } 
 
@@ -58,3 +75,11 @@ function checkEmptyCells() {
 // ADDITIONAL FEATURES:
   // Check for the lab room that the user is assigned to
     // Based on the lab room, the system will exclude the safety modules that are not required to be completed to enter the specific lab rooms
+  // Implementation:
+    // LabThree is the default (must fill all options)
+      // Any combination with LabThree requires no conditionals
+    // LabOne can do labTwo but not labThree
+    // IF labThree is included, then default
+    // IF labTwo only, then skip the 4 tentative modules
+    // IF labOne but no labThree, skip 1 tentative module
+    

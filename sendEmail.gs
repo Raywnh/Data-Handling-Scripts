@@ -4,7 +4,14 @@
  * Parameter: ...array - array containing the modules that users have yet to finish
 */
 function sendEmail(email,...array)  {
-  MailApp.sendEmail(email,'Reminders to complete the following safety training modules', 'Please remember to finish the following tasks:' + '\n' + array);
+
+  var reformattedString = '';
+
+  for (let i = 0; i < array[0].length; i++)  
+    reformattedString += '-' + array[0][i] + '\n';
+
+  
+  MailApp.sendEmail(email,'Reminders to complete the following safety training modules', 'Please remember to finish the following tasks:' + '\n' + '\n' + reformattedString);
 }
 
 // NOTES: 
