@@ -58,7 +58,7 @@ function checkEmptyCells() {
     if(incompletedElements.length != 0 && values[i][0].length != 0)
 
       // Function call to sendEmail which sends an automated email to the user containing the tasks that they must complete
-      sendEmail(values[i][0],incompletedElements);
+      sendReminderEmail(values[i][0],incompletedElements);
      
   } 
 } 
