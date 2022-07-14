@@ -1,18 +1,18 @@
 /*
- * Function: checkEmptyCells - checks each cell of the spreadsheet for whether it is empty and stores the titles of the empty elements into another array\
+ * Function: checkEmptyCells - checks each cell of the spreadsheet for whether it is empty and stores the titles of the empty elements into another array
  * Parameter(s): none 
 */
 
 function checkEmptyCells() {
-  // Opens the spreadsheet and stores the range of values in variable range (range is around 75 rows and 18 columns - subject to change)
-  var spreadSheet = openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
+  // Opens the spreadsheet and stores the range of values in variable range (range is around 75 rows and 18 columns - subject to change) 
+  var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
 
   var time = getTime();
 
-  if (time >= '08:00:00' && time <= '09:00:00')
+ // if (time >= '07:00:00' && time <= '08:00:00')
     var range = spreadSheet.getRangeByName('StudentData');
-  else  (time >= '09:00:00' && time <= '10:00:00')
-    var range = spreadSheet.getRangeByName('StaffData');
+  //else  (time >= '08:00:00' && time <= '09:00:00')
+   // var range = spreadSheet.getRangeByName('StaffData');
 
   // Gets the values in the range of data and stores them in a two dimensional array
   var values = range.getValues();
@@ -21,7 +21,7 @@ function checkEmptyCells() {
   // Loops through the two dimensional array and checks each cell for whether its empty 
   for (let i = 1; i < rowSize; i++) {
     var colSize = values[i].length;
-
+    var labSection = values[i][values[i].length - 1];
     // Creates an array that will be used to contain the specific elements that the users have yet to complete
     var incompletedElements = [];
     let k = 0;
@@ -54,3 +54,7 @@ function checkEmptyCells() {
 // Line 16: the row index start at 1 rather than at 0 because the first row contains the titles of the elements which do not have to be checked
 // Line 24: the column index starts at 1 rather than at 0 because the first column contains the 'Timestamp' element which do not have to be checked
 // Lines 27 and 36: if an array/element has length 0, it means that the variable is empty and blank
+
+// ADDITIONAL FEATURES:
+  // Check for the lab room that the user is assigned to
+    // Based on the lab room, the system will exclude the safety modules that are not required to be completed to enter the specific lab rooms
