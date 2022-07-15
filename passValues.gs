@@ -21,6 +21,7 @@ function passValues() {
   }
   */
   checkContractEnd(maxRows - 1, ...values);
+  checkEarlyTermination(maxRows,...values);
  
 }
 

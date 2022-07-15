@@ -17,7 +17,6 @@ function checkContractEnd(i,...values) {
     var weekBefore = new Date();
     weekBefore.setDate(weekBefore.getDate() - 7);
     weekBefore = Utilities.formatDate(weekBefore, "GMT+8", "MMMM dd, yyyy");
-    
 
     while(i > 0)  {
       if (values[i][14] == '')
@@ -32,23 +31,25 @@ function checkContractEnd(i,...values) {
     
         var email = values[i][0];
     
-        // Call to move row of data function if the date of the contract's end date is = today's date
-        if (reformattedDate == weekAfter) {
+        // If the today's date is one week before the contract end date, send email
+        if (reformattedDate == weekAfter) 
           sendContractEndEmail(email, 7);
-          i--;
-        }
-        else if(reformattedDate == currentDate) {
+    
+        // Send email if date of contract is ending on current date
+        else if(reformattedDate == currentDate) 
           sendContractEndEmail(email, 0);
-          i--;
-        }
-        else if (reformattedDateWeekAfter == currentDate || values[i][maxLength - 1] != '') {
+      
+        // Move the row if a week has passed after contract has ended
+        else if (reformattedDateWeekAfter == currentDate) 
           moveData(i+1);
-          i--;
-        }
-     
-        // If both dates aren't the same, then end the function
-        else
+          
+      
+        // If the date encountered is more than a week after the current date, we stop the function as it applies to everything else above
+        else if (reformattedDate > weekAfter)
           return;
+               
+        i--;
+      
       } 
     } 
 }

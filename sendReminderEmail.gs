@@ -7,7 +7,6 @@ function sendReminderEmail(email,...array)  {
 
   var reformattedString = '';
 
-
   // Reformats the items into an organized list
   for (let i = 0; i < array[0].length; i++)  
     reformattedString += '- ' + array[0][i] + '\n';

@@ -35,11 +35,13 @@ function checkEmptyCells() {
     let k = 0;
 
     for (let j = 1; j < colSize; j++) {
-      
+
+        // One possible combination
         if (labSection.includes(labOne) && !labSection.includes(labThree))  {
           if (j == 9)
             j++;
         }
+        // Second possible combination 
         else if (labSection == labTwo)  {
           if (j == 7)
             j = 11;
@@ -72,14 +74,8 @@ function checkEmptyCells() {
 // Line 24: the column index starts at 1 rather than at 0 because the first column contains the 'Timestamp' element which do not have to be checked
 // Lines 27 and 36: if an array/element has length 0, it means that the variable is empty and blank
 
-// ADDITIONAL FEATURES:
-  // Check for the lab room that the user is assigned to
-    // Based on the lab room, the system will exclude the safety modules that are not required to be completed to enter the specific lab rooms
-  // Implementation:
-    // LabThree is the default (must fill all options)
-      // Any combination with LabThree requires no conditionals
-    // LabOne can do labTwo but not labThree
-    // IF labThree is included, then default
-    // IF labTwo only, then skip the 4 tentative modules
-    // IF labOne but no labThree, skip 1 tentative module
+// The two conditional statements inside the loop is for filtering out the safety training modules that users are required to finish
+  // The rooms contained in labThree have to do every module in the form but labTwo users can skip 4 modules
+  // Whereas labOne users can skip one module
+  // So if someone is included in labThree, it does not matter if they also have access to labTwo/labOne or not, because labThree covers all possible modules 
     

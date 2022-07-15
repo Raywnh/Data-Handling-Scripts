@@ -7,9 +7,9 @@ function sortDate() {
   var studentRange = spreadSheet.getRangeByName('SortStudentData');
   var staffRange = spreadSheet.getRangeByName('SortStaffData');
 
-  // Sorts the data based on column 9 which contains all user's contract end dates in descending order
-  studentRange.sort({column: 19, ascending: false});
-  staffRange.sort({column: 19, ascending: false});
+  // Sorts the data based on column 16 which contains all user's contract end dates in descending order
+  studentRange.sort({column: 16, ascending: false});
+  staffRange.sort({column: 16, ascending: false});
 }
 
 // NOTES:
