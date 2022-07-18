@@ -14,10 +14,6 @@ function checkContractEnd(i,...values) {
     weekAfter.setDate(weekAfter.getDate() + 7);
     weekAfter = Utilities.formatDate(weekAfter, "GMT+8", "MMMM dd, yyyy");
 
-    var weekBefore = new Date();
-    weekBefore.setDate(weekBefore.getDate() - 7);
-    weekBefore = Utilities.formatDate(weekBefore, "GMT+8", "MMMM dd, yyyy");
-
     while(i > 0)  {
       if (values[i][14] == '')
         i--;
@@ -28,16 +24,17 @@ function checkContractEnd(i,...values) {
         var reformattedDateWeekAfter = new Date(values[i][14]);
         reformattedDateWeekAfter.setDate(reformattedDateWeekAfter.getDate() + 7);
         reformattedDateWeekAfter = Utilities.formatDate(reformattedDateWeekAfter, "GMT+8", "MMMM dd, yyyy");
-    
+        
         var email = values[i][0];
+        var name = values[i][1];
     
         // If the today's date is one week before the contract end date, send email
         if (reformattedDate == weekAfter) 
-          sendContractEndEmail(email, 7);
+          sendContractEndEmail(email,name, 7);
     
         // Send email if date of contract is ending on current date
         else if(reformattedDate == currentDate) 
-          sendContractEndEmail(email, 0);
+          sendContractEndEmail(email,name, 0);
       
         // Move the row if a week has passed after contract has ended
         else if (reformattedDateWeekAfter == currentDate) 
@@ -69,5 +66,4 @@ function checkContractEnd(i,...values) {
   // If they are extending the contract, then link to the form telling them to update the new contract end date
 // Else
   // After 7 days, automatically archive user data
-  // If a user wants to end their contract end, they must fill in the form (a cell that says end contract early)
-    // If filled, auto archive user data
+  

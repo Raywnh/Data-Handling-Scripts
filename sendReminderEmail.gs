@@ -6,13 +6,19 @@
 function sendReminderEmail(email,...array)  {
 
   var reformattedString = '';
+  var time = getTime();
+  
+  if (time >= '08:00:00'  && time <= '09:00:00')
+    var link = 'https://docs.google.com/forms/d/e/1FAIpQLSfPneEAv6dE1_OCYvdAfzQb-qNcwrTTsjtHj8dxkpEDZXbfVA/viewform?usp=sf_link';
+  else if (time >= '09:00:00' && time <= '10:00:00')
+    var link = 'https://docs.google.com/forms/d/e/1FAIpQLSdMW7KoNgiRdKiLH5gN9ZcQB2ocA5UDEWiyMe94bfZjYF72fA/viewform?usp=sf_link';
 
   // Reformats the items into an organized list
   for (let i = 0; i < array[0].length; i++)  
     reformattedString += '- ' + array[0][i] + '\n';
 
-  
-  MailApp.sendEmail(email,'This is a reminder to complete the following safety training modules', 'Please remember to finish the following tasks:' + '\n' + '\n' + reformattedString);
+
+  MailApp.sendEmail(email,'This is a reminder to complete the following safety training modules', 'Please remember to finish the following tasks and update it in ' + link +':' + '\n' + '\n' + reformattedString);
 }
 
 // NOTES: 

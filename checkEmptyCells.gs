@@ -19,7 +19,7 @@ function checkEmptyCells() {
   var rowSize = values.length;
 
 
-  // All possible combinations of assigned lab sections 
+  // All assigned lab sections 
   var labOne = 'P1610, P1607, P1410';
   var labTwo = 'P1628';
   var labThree = 'P1816, P1602';
@@ -28,7 +28,7 @@ function checkEmptyCells() {
   for (let i = 1; i < rowSize; i++) {
     var colSize = values[i].length;
     
-    var labSection = values[i][values[i].length - 1];
+    var labSection = values[i][values[i].length - 2];
 
     // Creates an array that will be used to contain the specific elements that the users have yet to complete
     var incompletedElements = [];

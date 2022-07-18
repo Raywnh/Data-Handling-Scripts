@@ -1,7 +1,7 @@
 function tests(email,...array) {
   var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
 
-  var c = new Date('December 30, 2022');
+  var c = new Date('December 30, 2021');
   c.setDate(c.getDate());
   c = Utilities.formatDate(c, "GMT+8", "MMMM dd, yyyy");
 
@@ -9,14 +9,14 @@ function tests(email,...array) {
     d.setDate(d.getDate());
     d = Utilities.formatDate(d, "GMT+8", "MMMM dd, yyyy");
 
-  var e = new Date('December 31, 2022');
+  var e = new Date('December 31, 2021');
     e = Utilities.formatDate(e,"GMT+8", "MMMM dd, yyyy");
 
   console.log(c);
   console.log(d);
   console.log(e);
 
-  if (d > e && e > c)
+  if (d > e && d > c)
     console.log('true');
 
 }
