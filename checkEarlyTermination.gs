@@ -3,9 +3,9 @@
  * Parameter: length - length of the stored value array in the last column
  * Parameter: ...values - the array containing the values stored in the last column of the spreadsheet
  */
-function checkEarlyTermination(length,...values) {
-  for (let i = 0; i < length; i++)  {
-    if (values[i][values[i].length - 1] == 'Yes')
+function checkEarlyTermination(index,...values) {
+  for (let i = index; i > 0; i--)  {
+    if (values[i][values[0].length - 1] == 'Yes') // If the early termination box is filled, then we delete the row of data
       moveData(i+1);
   }  
 }

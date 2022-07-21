@@ -6,23 +6,28 @@
 function passValues() {
   var time = getTime();
 
-  var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
-  
- // if (time >= '08:00:00' && time <= '09:00:00') {
-    // Takes the column containing only the dates of when each contract ends
+  var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');  // Opens the spreadsheet
+
+ // Takes the column containing only the dates of when each contract ends and stores them in an array
+  if (time >= '08:00:00' && time <= '09:00:00') {
+   
     var range = spreadSheet.getRangeByName('StudentData');
     var values = range.getValues();
     var maxRows = values.length;
- //}
- /* else if (time >= '09:00:00' && time <= '10:00:00')  {
+  }
+  else if (time >= '09:00:00' && time <= '10:00:00')  {
     var range = spreadSheet.getRangeByName('StaffData');
     var values = range.getValues();
     var maxRows = values.length;
   }
-  */
+  
+
+  // Checks the column for the status of a contract
   checkContractEnd(maxRows - 1, ...values);
-  checkEarlyTermination(maxRows,...values);
- 
+
+  // Checks whether a user has filled out the question that asks them whether they want to terminate their contract early
+  checkEarlyTermination(maxRows - 1,...values);
+  
 }
 
 // NOTES:

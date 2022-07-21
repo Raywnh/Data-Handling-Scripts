@@ -5,14 +5,14 @@
 
 function checkEmptyCells() {
   // Opens the spreadsheet and stores the range of values in variable range (range is around 75 rows and 18 columns - subject to change) 
-  var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');
+  var spreadSheet = SpreadsheetApp.openById('spreadsheetid');
 
   var time = getTime();
 
- // if (time >= '07:00:00' && time <= '08:00:00')
+  if (time >= '07:00:00' && time <= '08:00:00')
     var range = spreadSheet.getRangeByName('StudentData');
-  //else  (time >= '08:00:00' && time <= '09:00:00')
-   // var range = spreadSheet.getRangeByName('StaffData');
+  else  (time >= '08:00:00' && time <= '09:00:00')
+    var range = spreadSheet.getRangeByName('StaffData');
 
   // Gets the values in the range of data and stores them in a two dimensional array
   var values = range.getValues();
@@ -20,9 +20,9 @@ function checkEmptyCells() {
 
 
   // All assigned lab sections 
-  var labOne = 'P1610, P1607, P1410';
-  var labTwo = 'P1628';
-  var labThree = 'P1816, P1602';
+  var labOne = '1';
+  var labTwo = '2';
+  var labThree = '3';
 
   // Loops through the two dimensional array and checks each cell for whether its empty 
   for (let i = 1; i < rowSize; i++) {
@@ -35,18 +35,19 @@ function checkEmptyCells() {
     let k = 0;
 
     for (let j = 1; j < colSize; j++) {
-
-        // One possible combination
-        if (labSection.includes(labOne) && !labSection.includes(labThree))  {
-          if (j == 9)
+        if (j == 13)
+          j++;
+          
+        // One possible combination - includes labOne but not labThree
+        if (labSection.includes(labOne) && !labSection.includes(labThree) && j == 9)  
             j++;
-        }
-        // Second possible combination 
-        else if (labSection == labTwo)  {
-          if (j == 7)
-            j = 11;
-        }
         
+        // Second possible combination - only includes labTwo
+        else if (labSection == labTwo && j == 7)  
+            j = 11;
+
+        // Third possible cominbation - includes labThree (no conditionals since it requires all modules)
+
         // If the cell is empty, add the title of the element into the array 
         if (values[i][j].length == 0) {
 
