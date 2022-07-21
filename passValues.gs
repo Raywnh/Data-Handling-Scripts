@@ -6,7 +6,7 @@
 function passValues() {
   var time = getTime();
 
-  var spreadSheet = SpreadsheetApp.openById('1e2fwQYrC86XkmxpedP50jVbXjwx6RFEeO8tygoZ9_b4');  // Opens the spreadsheet
+  var spreadSheet = SpreadsheetApp.openById('spreadsheetid');  // Opens the spreadsheet
 
  // Takes the column containing only the dates of when each contract ends and stores them in an array
   if (time >= '08:00:00' && time <= '09:00:00') {

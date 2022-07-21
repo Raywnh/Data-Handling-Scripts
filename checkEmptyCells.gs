@@ -20,9 +20,9 @@ function checkEmptyCells() {
 
 
   // All assigned lab sections 
-  var labOne = '1';
-  var labTwo = '2';
-  var labThree = '3';
+  var labOne = 'P1610, P1607, P1410';
+  var labTwo = 'P1628';
+  var labThree = 'P1816, P1602';
 
   // Loops through the two dimensional array and checks each cell for whether its empty 
   for (let i = 1; i < rowSize; i++) {
