@@ -18,6 +18,5 @@ function sendContractEndEmail(email, name, daysUntilContractEnd) {
     MailApp.sendEmail(email, 'Contract Extension/Termination', 'Dear ' + name +',\n\n' +'This is a reminder that your contract will end in ' + daysUntilContractEnd +' days, if you are planning to extend your contract, please email example@gmail.com for further details.\n\nIf you have already extended your contract, we request that you update the following in the google form attached below:\n\n'+modules +'\n\n' +'Here is the link to the google form: ' +link +'\n\nIgnore this message if none of the above applies.');
   else if (daysUntilContractEnd == 0)
     MailApp.sendEmail(email, 'Contract Extension/Termination', 'Dear ' + name +',\n\n' +'This is a reminder that your contract will end in ' + daysUntilContractEnd +' days, if you are planning to extend your contract, please email example@gmail.com for further details.\n\nIf you have already extended your contract, we request that you update the following in the google form attached below:\n\n'+modules +'\n\n' +'If you are not planning to renew your contract, please fill out the following in the google form attached below (if applicable):\n\n' +testModules + '\n\nHere is the link to the google form: ' +link + '\n\nIgnore this message if none of the above applies.');
-
 }
 
