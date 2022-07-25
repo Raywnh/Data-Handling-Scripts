@@ -1,16 +1,16 @@
 /*
  * Function: checkContractEnd - checks each cell in the column containing the user's contract end date
- * Parameter: i - The starting index of the cell that we start searching from (index 0 = row 1)
+ * Parameter: i - The starting index of the cell that we start searching from
  * Parameter: ...values - the array of values containing the contract end dates
  */
 
 function checkContractEnd(i,...values) {
     var maxLength = values[0].length; 
 
-    // Stores the current date as a variable
+    // Stores the current date
     var currentDate = Utilities.formatDate(new Date(), "GMT+8", "MMMM dd, yyyy");
 
-    // Stores the date a week after current date as a variable
+    // Stores the date a week after current date
     var weekAfter = new Date();
     weekAfter.setDate(weekAfter.getDate() + 7);
     weekAfter = Utilities.formatDate(weekAfter, "GMT+8", "MMMM dd, yyyy");
@@ -51,7 +51,3 @@ function checkContractEnd(i,...values) {
       } 
     } 
 }
-
-// NOTES:
-
-// Dates are sorted in descending order so we search from bottom up
