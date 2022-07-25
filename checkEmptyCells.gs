@@ -2,51 +2,59 @@
  * Function: checkEmptyCells - checks each cell of the spreadsheet for whether it is empty and stores the titles of the empty elements into another array
  * Parameter(s): none 
 */
-
 function checkEmptyCells() {
-  // Opens the spreadsheet and stores the range of values in variable range (range is around 75 rows and 18 columns - subject to change) 
-  var spreadSheet = SpreadsheetApp.openById('spreadsheetid');
+
+  // Opens the spreadsheet 
+  var spreadSheet = SpreadsheetApp.openById('spreadsheetID');
 
   var time = getTime();
+                               
+  if (time >= '05:00:00' && time <= '06:00:00')   // If time is between 5 AM and 6 AM, then we deal with student data only
+    var range = spreadSheet.getRangeByName('Data1');
+  else if (time >= '06:00:00' && time <= '07:00:00')  // If time is between 6 AM and 7 AM, then we deal with staff data onlu
+    var range = spreadSheet.getRangeByName('Data2');
 
-  if (time >= '07:00:00' && time <= '08:00:00')
-    var range = spreadSheet.getRangeByName('StudentData');
-  else  (time >= '08:00:00' && time <= '09:00:00')
-    var range = spreadSheet.getRangeByName('StaffData');
+ 
+  var values = range.getValues();   // Gets the values in the range of data and stores them in a two dimensional array
+  var rowSize = values.length;      // Save the number of rows in the range as a variable
 
-  // Gets the values in the range of data and stores them in a two dimensional array
-  var values = range.getValues();
-  var rowSize = values.length;
-
-
-  // All assigned lab sections 
-  var labOne = 'P1610, P1607, P1410';
-  var labTwo = 'P1628';
-  var labThree = 'P1816, P1602';
-
+  // All assigned lab sections (these are placeholder names for now)
+  var labOne = '1,2,3';
+  var labTwo = '4';
+  var labThree = '5, 6';
+  var labFour = '7';
+  
   // Loops through the two dimensional array and checks each cell for whether its empty 
   for (let i = 1; i < rowSize; i++) {
     var colSize = values[i].length;
     
-    var labSection = values[i][values[i].length - 2];
+    var labSection = values[i][11]; 
 
-    // Creates an array that will be used to contain the specific elements that the users have yet to complete
+    // Creates an array that will be used to store the specific elements that the users have yet to complete
     var incompletedElements = [];
-    let k = 0;
+    let k = 0;  // For adding elements into the incompletedElements array (using Array.push() is better)
 
-    for (let j = 1; j < colSize; j++) {
-        if (j == 13)
+
+    
+    for (let j = 1; j < colSize - 6; j++) {
+
+        if (j == 10 || j == 23) 
           j++;
-          
+        
         // One possible combination - includes labOne but not labThree
-        if (labSection.includes(labOne) && !labSection.includes(labThree) && j == 9)  
+        if (labSection.includes(labOne) && !labSection.includes(labThree) && j == 19)   // 
             j++;
         
         // Second possible combination - only includes labTwo
-        else if (labSection == labTwo && j == 7)  
-            j = 11;
+        else if (labSection == labTwo && j == 17)  // 
+            j = 21; // Index 21 represents LAB09
 
-        // Third possible cominbation - includes labThree (no conditionals since it requires all modules)
+        // Third possible combination - office workers
+        else if (labSection == labFour && j == 15)  
+            j = 23; 
+            
+
+        // Fourth possible cominbation - includes labThree (no conditionals since it requires all modules to be completed)
 
         // If the cell is empty, add the title of the element into the array 
         if (values[i][j].length == 0) {
@@ -65,18 +73,3 @@ function checkEmptyCells() {
      
   } 
 } 
-
-// NOTES:
-
-// Algorithm may slow down if the size of the range increases to 100 rows and 18 columns. This should not be a problem unless the function takes more than 30 seconds to run
-
-// Line 9: if applicable, the range of the data used can be renamed accordingly by editing the 'Data' to a different name in the spreadsheet. Note the requirement of the name to be enclosed in single-quotes or double quotes
-// Line 16: the row index start at 1 rather than at 0 because the first row contains the titles of the elements which do not have to be checked
-// Line 24: the column index starts at 1 rather than at 0 because the first column contains the 'Timestamp' element which do not have to be checked
-// Lines 27 and 36: if an array/element has length 0, it means that the variable is empty and blank
-
-// The two conditional statements inside the loop is for filtering out the safety training modules that users are required to finish
-  // The rooms contained in labThree have to do every module in the form but labTwo users can skip 4 modules
-  // Whereas labOne users can skip one module
-  // So if someone is included in labThree, it does not matter if they also have access to labTwo/labOne or not, because labThree covers all possible modules 
-    
