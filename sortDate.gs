@@ -4,17 +4,13 @@
  */
 
 function sortDate() {
-  var spreadSheet = SpreadsheetApp.openById('spreadsheetid');  // Opens spreadsheet
-  var studentRange = spreadSheet.getRangeByName('SortStudentData'); // Opens the range named 'SortStudentData' in the spreadsheet
-  var staffRange = spreadSheet.getRangeByName('SortStaffData');     // Opens the range named 'SortStaffData' in the spreadsheet
+  var spreadSheet = SpreadsheetApp.openById('spreadsheetID');  
+  var range1 = spreadSheet.getRangeByName('sortUser1'); 
+  var range2 = spreadSheet.getRangeByName('sortUser2');     
+  var oldDataRange = spreadSheet.getRangeByName('sortOldData');
 
-  // Sorts the data based on column 16 which contains all user's contract end dates in descending order
-  studentRange.sort({column: 16, ascending: false});  // Column is the column number in the spreadsheet: A = 1, B = 2, C = 3...
-  staffRange.sort({column: 16, ascending: false});
+  // Sorts the data based on column 26 which contains all user's contract end dates in descending order
+  range1.sort({column: 26, ascending: false});  // Column is the column number in the spreadsheet: A = 1, B = 2, C = 3...
+  range2.sort({column: 26, ascending: false});
+  oldDataRange.sort({column: 1, ascending: true});  // Sort old data range based on timestamp from earliest to oldest
 }
-
-// NOTES:
-
-// We sort the data in descending order depending on the date of the contract ending to easily search for the earliest date which is placed at the bottom
-// If earliest date is not equal to the current date, no other date will be as well, which decreases the time it takes to search within the data set
-
