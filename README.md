@@ -1,5 +1,7 @@
 # Google Sheets Automation 
-Collection of code created in Google Apps Scripts to automate functions in Google Sheets for data organization || City University of Hong Kong Summer 2022 Internship.
+_City University of Hong Kong Summer 2022 Internship._
+
+Collection of code created in Google Apps Scripts to automate functions in Google Sheets for data organization 
 
 Functions that are automated using the scripts created above include:
   - Moving rows of data based on whether a user's contract has ended
