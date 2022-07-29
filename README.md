@@ -1,5 +1,4 @@
-# Google Sheets Automation 
-_City University of Hong Kong Summer 2022 Internship._
+# Google Sheets Automation || City University of Hong Kong Summer 2022 Internship
 
 Collection of code created in Google Apps Scripts to automate functions in Google Sheets for data organization 
 
